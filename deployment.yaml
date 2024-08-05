@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-deployment
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    name: my-app_pod
+    namespace: default
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-app-deployment
+        image: node:lts-alpine3.19
+        ports:
+        - containerPort: 3000
